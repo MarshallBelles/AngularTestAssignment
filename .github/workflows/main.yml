@@ -29,7 +29,7 @@ jobs:
       run: cp -r ./AngularTestAssignment/dist/AngularTestAssignment/* ./firebase/public
     - name: Deploy
       env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_KEY }}
       run: |
         cd firebase
         firebase deploy --token "$FIREBASE_TOKEN"
