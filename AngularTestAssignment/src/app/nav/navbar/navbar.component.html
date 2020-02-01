@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" (window:resize)="onResize($event)">
+  <span>AngularTestAssignment</span>
+  <span class="example-fill-remaining-space"></span>
+  <div *ngIf="mobileView">
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item [routerLink]="['']">Home</button>
+        <button mat-menu-item [routerLink]="['search']">Search</button>
+    </mat-menu>
+    <button mat-button [routerLink]="['cart']">Cart: {{cartCount}} Items</button>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu"><mat-icon>more_vert</mat-icon></button>
+  </div>
+  <div *ngIf="!mobileView">
+      <button mat-button [routerLink]="['']">Home</button>
+      <button mat-button [routerLink]="['search']">Search</button>
+      <button mat-button [routerLink]="['cart']">Cart: {{cartCount}} Items</button>
+  </div>
+</mat-toolbar>
