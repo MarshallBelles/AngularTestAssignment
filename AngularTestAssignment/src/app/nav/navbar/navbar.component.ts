@@ -8,8 +8,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  public mobileView:boolean; // public just in case we want to check from elsewhere.
-  cartCount:number;
+  public mobileView: boolean; // public just in case we want to check from elsewhere.
+  cartCount: number;
 
   constructor() { }
 
