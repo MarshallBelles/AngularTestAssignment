@@ -11,7 +11,7 @@
   </div>
   <div *ngIf="!mobileView">
       <button mat-button [routerLink]="['']">Home</button>
-      <button mat-button [routerLink]="['search']">Search</button>
-      <button mat-button [routerLink]="['cart']">Cart: {{cartCount}} Items</button>
+      <button mat-button [routerLink]="['/search']">Search</button>
+      <button mat-button [routerLink]="['/cart']">Cart: {{cartCount}} Items</button>
   </div>
 </mat-toolbar>
