@@ -32,4 +32,4 @@ jobs:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_KEY }}
       run: |
         cd firebase
-        firebase deploy --token "$FIREBASE_TOKEN"
+        sudo firebase deploy --token "$FIREBASE_TOKEN"
