@@ -91,5 +91,16 @@ export class DataServiceService {
   }
   search(SearchTerm: string) {
     // loop through all products and return matching products
+    const localArr: Product[] = new Array();
+    this.localDB.forEach(element => {
+      if (element.title.includes(SearchTerm)) {
+        // This title matches
+        localArr.push(element);
+      } else if (element.description.includes(SearchTerm)) {
+        // The description matches
+        localArr.push(element);
+      }
+    });
+    return localArr;
   }
 }
