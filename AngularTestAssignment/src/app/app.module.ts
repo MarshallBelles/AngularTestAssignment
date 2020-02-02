@@ -12,6 +12,7 @@ import { ProductGridComponent } from './components/product-grid/product-grid.com
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsModuleModule } from './services/products-module/products-module.module';
+import { FormsModule } from '@angular/forms';
 
 // Angular Material Components
 import {MatCheckboxModule} from '@angular/material';
@@ -44,6 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ProductsComponent } from './pages/products/products.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NavbarComponent,
     FooterComponent,
     ProductGridComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

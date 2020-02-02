@@ -8,7 +8,7 @@ import { DataServiceService } from './data-service.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService implements OnDestroy {
+export class ProductsService {
 
   // Subscribe to these observables in other components
   private AllProductsSubject: Subject<Product[]>;
@@ -25,12 +25,6 @@ export class ProductsService implements OnDestroy {
     // This is to prevent improper usage of this service
     this.AllProductsObservable = this.AllProductsSubject.asObservable();
     this.SearchResultsObservable = this.SearchResultsSubject.asObservable();
-  }
-
-  ngOnDestroy() {
-    // Remove any subscriptions here
-    this.AllProductsSubject.complete();
-    this.SearchResultsSubject.complete();
   }
 
   public init() {
