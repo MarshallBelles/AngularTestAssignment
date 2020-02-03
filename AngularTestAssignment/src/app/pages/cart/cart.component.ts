@@ -20,6 +20,7 @@ export class CartComponent implements OnInit, OnDestroy {
   cartSub: Subscription;
   cart: CartTableInterface[];
   items: boolean;
+  total: number;
 
   constructor(private CS: CartService) {
   }
@@ -39,8 +40,10 @@ export class CartComponent implements OnInit, OnDestroy {
 
   refreshCart() {
     this.cart = [];
+    this.total = 0;
     this.CS.cart.forEach((num, product, map) => {
       this.cart.push({count: num, title: product.title, price: product.price, productRef: product});
+      this.total += (product.price * +num);
     });
     if (this.cart.length > 0) {
       this.items = true;
