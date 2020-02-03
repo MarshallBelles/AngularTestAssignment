@@ -1,6 +1,6 @@
 # AngularTestAssignment
 
-This code automatically deploys with GitHub Actions to a [Firebase Project](https://angulartestassignment.web.app):
+This code automatically deploys with GitHub Actions to a [Firebase Project](https://angulartestassignment.firebaseapp.com):
 
 name: CI
 
