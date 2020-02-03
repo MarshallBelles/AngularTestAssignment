@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
 
-  constructor() { }
+  searchBar: any;
+  searching: boolean;
+
+  constructor(private PS: ProductsService) { }
 
   ngOnInit() {
+    this.searching = false;
+  }
+
+  searchProducts(searchTerm: string) {
+    this.PS.ProductSearch(searchTerm);
+    this.searching = true;
+  }
+
+  clearSearch() {
+    this.PS.refresh();
+    this.searching = false;
   }
 
 }

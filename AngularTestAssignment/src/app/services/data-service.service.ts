@@ -50,14 +50,14 @@ export class DataServiceService {
     if (!productID) {
       return this.localDB;
     } else {
-      let retProd: Product;
+      const retProd: Product[] = new Array();
       this.localDB.forEach(prod => {
         if (prod.id === productID) {
-          retProd = prod;
+          retProd.push(prod);
           return retProd;
         }
       });
-      return; // if no matching product, return nothing.
+      return retProd; // if no matching product, return nothing.
     }
   }
   update(product: Product) {
@@ -93,10 +93,10 @@ export class DataServiceService {
     // loop through all products and return matching products
     const localArr: Product[] = new Array();
     this.localDB.forEach(element => {
-      if (element.title.includes(SearchTerm)) {
+      if (element.title.toLowerCase().includes(SearchTerm.toLowerCase())) {
         // This title matches
         localArr.push(element);
-      } else if (element.description.includes(SearchTerm)) {
+      } else if (element.description.toLowerCase().includes(SearchTerm.toLowerCase())) {
         // The description matches
         localArr.push(element);
       }

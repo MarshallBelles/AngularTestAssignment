@@ -6,9 +6,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
 
-  public mobileView: boolean; // public just in case we want to check from elsewhere.
+  mobileView: boolean;
   cartCount: number;
 
   constructor() { }
@@ -22,10 +22,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.cartCount = 0;
   }
 
-  ngOnDestroy() {
-    //
-  }
-
   onResize(event) {
     // Since we are watching the window size from the HTML, event.target.innerWidth will be the window width.
     // This could also be done with CSS, but in this instance we want more control.
@@ -35,5 +31,4 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.mobileView = false;
     }
   }
-
 }

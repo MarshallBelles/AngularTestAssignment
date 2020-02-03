@@ -1,23 +1,44 @@
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-        *ngFor="let product of page"
-        [colspan]="1"
-        [rowspan]="1">
-        <div class="container grid-item">
-            <div>
-                <img src="{{product.image_url}}" alt="">
+<div (window:resize)="onResize($event)">
+    <mat-grid-list *ngIf="!mobile" cols="4" rowHeight="300px">
+        <mat-grid-tile
+            *ngFor="let product of page"
+            [colspan]="1"
+            [rowspan]="1">
+            <div class="container">
+                <img class="grid-item" src="{{product.image_url}}" alt="">
+                <a mat-button class="grid-item" [routerLink]="['/products', product.id]">{{product.title}}</a>
+                <label class="grid-item" for="amount">Amount</label>
+                <form class="grid-item" style="width: 100%;">
+                    <mat-form-field style="width: 100px; max-width: 100%; margin: auto;">
+                        <input matInput #amount type="number" value="1">
+                    </mat-form-field>
+                  </form>
+                <button class="grid-item" mat-raised-button (click)="addToCart(product, amount.value)">Add To Cart</button>
             </div>
-            <div style="max-width: 100%; width: auto;">
-                <a mat-button [routerLink]="['/products', product.id]">{{product.title}}</a>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list *ngIf="mobile" cols="2" rowHeight="300px">
+        <mat-grid-tile
+            *ngFor="let product of page"
+            [colspan]="1"
+            [rowspan]="1">
+            <div class="container">
+                <img class="grid-item" src="{{product.image_url}}" alt="">
+                <a mat-button class="grid-item" [routerLink]="['/products', product.id]">{{product.title}}</a>
+                <label class="grid-item" for="amount">Amount</label>
+                <form class="grid-item" style="width: 100%;">
+                    <mat-form-field style="width: 100px; max-width: 100%; margin: auto;">
+                        <input matInput #amount type="number" value="1">
+                    </mat-form-field>
+                  </form>
+                <button class="grid-item" mat-raised-button (click)="addToCart(product, amount.value)">Add To Cart</button>
             </div>
-            <label for="amount">Amount</label><input #amount type="number" value="1">
-            <button mat-button (click)="addToCart(product)">Add To Cart</button>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
-<mat-paginator  [length]="length"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="pageUpdate($event)">
-</mat-paginator>
-<div class="buffer"></div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-paginator  [length]="length"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageUpdate($event)">
+    </mat-paginator>
+    <div class="buffer"></div>
+</div>
