@@ -1,4 +1,21 @@
 <app-navbar></app-navbar>
-<div *ngIf="productView">
-    found product!
+<div class="container" *ngIf="productView">
+    <h1>
+        {{productView.title}}
+    </h1>
+    <h3>
+        {{productView.genre}}
+    </h3>
+    <img src="{{productView.image_url}}" alt="">
+    <p>
+        {{productView.description}}
+    </p>
+    <form style="width: 100%;">
+        <button style="margin: 10px;" mat-raised-button (click)="addToCart(productView, amount.value)">
+            Add To Cart ${{productView.price}}
+        </button>
+        <mat-form-field style="width: 100px; max-width: 100%; margin: auto;">
+            <input matInput #amount type="number" value="1">
+        </mat-form-field>
+    </form>
 </div>

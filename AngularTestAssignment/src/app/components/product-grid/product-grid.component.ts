@@ -3,6 +3,7 @@ import { PageEvent } from '@angular/material';
 import { ProductsService } from 'src/app/services/products.service';
 import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/services/products-module/products-module.module';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-grid',
@@ -11,7 +12,7 @@ import { Product } from 'src/app/services/products-module/products-module.module
 })
 export class ProductGridComponent implements OnInit, OnDestroy {
 
-  constructor(private PS: ProductsService) {
+  constructor(private PS: ProductsService, private CS: CartService) {
   }
 
   mobile: boolean;
@@ -57,7 +58,8 @@ export class ProductGridComponent implements OnInit, OnDestroy {
     this.page = this.products.slice(0, 20);
   }
 
-  addToCart(prod: Product, amount: number) {
+  addToCart(product: Product, amount: number) {
+    this.CS.addToCart(product, amount);
   }
 
   onResize(event) {

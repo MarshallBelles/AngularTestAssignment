@@ -1,4 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/services/cart.service';
+import { Product } from 'src/app/services/products-module/products-module.module';
 
 @Component({
   selector: 'app-navbar',
@@ -6,12 +9,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   mobileView: boolean;
   cartCount: number;
+  cartSub: Subscription;
 
-  constructor() { }
+  constructor(private CS: CartService) {
+    // get count until observable returns next value
+    // this helps us stay on track after nav events.
+    this.cartCount = CS.count();
+  }
 
   ngOnInit() {
     if (window.innerWidth < 600) {
@@ -19,7 +27,18 @@ export class NavbarComponent implements OnInit {
     } else {
       this.mobileView = false;
     }
-    this.cartCount = 0;
+    this.cartSub = this.CS.cartObservable.subscribe((cart) => {
+      if (!cart) { return; }
+      let totalCount = 0;
+      cart.forEach((num: number, product: Product, map: Map<Product, number>) => {
+        totalCount += +num;
+      });
+      this.cartCount = totalCount;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.cartSub) { this.cartSub.unsubscribe(); }
   }
 
   onResize(event) {

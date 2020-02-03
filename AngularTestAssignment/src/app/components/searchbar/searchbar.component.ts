@@ -8,6 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class SearchbarComponent implements OnInit {
 
+  input: any;
   searchBar: any;
   searching: boolean;
 
@@ -25,6 +26,7 @@ export class SearchbarComponent implements OnInit {
   clearSearch() {
     this.PS.refresh();
     this.searching = false;
+    this.input = '';
   }
 
 }

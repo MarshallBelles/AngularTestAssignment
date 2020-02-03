@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SearchComponent } from './pages/search/search.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { FooterComponent } from './nav/footer/footer.component';
@@ -52,7 +51,6 @@ import { ProductsComponent } from './pages/products/products.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchComponent,
     CartComponent,
     NavbarComponent,
     FooterComponent,

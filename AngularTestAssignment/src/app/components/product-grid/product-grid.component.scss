@@ -2,11 +2,17 @@ img {
     max-width: 90%;
     max-height: 90%;
 }
-.buffer {
-    padding-bottom: 60px;
-}
 .grid-item {
     display: block;
     text-align: center;
     margin: auto;
+    max-width: 100%;
+    font-size: 1vw;
+}
+.grid-item-mobile {
+    display: block;
+    text-align: center;
+    margin: auto;
+    max-width: 100%;
+    font-size: 2vw;
 }

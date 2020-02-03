@@ -7,12 +7,12 @@
             <div class="container">
                 <img class="grid-item" src="{{product.image_url}}" alt="">
                 <a mat-button class="grid-item" [routerLink]="['/products', product.id]">{{product.title}}</a>
-                <label class="grid-item" for="amount">Amount</label>
+                <label class="grid-item" for="amount">${{product.price}}</label>
                 <form class="grid-item" style="width: 100%;">
                     <mat-form-field style="width: 100px; max-width: 100%; margin: auto;">
                         <input matInput #amount type="number" value="1">
                     </mat-form-field>
-                  </form>
+                </form>
                 <button class="grid-item" mat-raised-button (click)="addToCart(product, amount.value)">Add To Cart</button>
             </div>
         </mat-grid-tile>
@@ -24,14 +24,14 @@
             [rowspan]="1">
             <div class="container">
                 <img class="grid-item" src="{{product.image_url}}" alt="">
-                <a mat-button class="grid-item" [routerLink]="['/products', product.id]">{{product.title}}</a>
-                <label class="grid-item" for="amount">Amount</label>
+                <a mat-button class="grid-item-mobile" [routerLink]="['/products', product.id]">{{product.title}}</a>
+                <label class="grid-item-mobile" for="amount">${{product.price}}</label>
                 <form class="grid-item" style="width: 100%;">
                     <mat-form-field style="width: 100px; max-width: 100%; margin: auto;">
-                        <input matInput #amount type="number" value="1">
+                        <input class="grid-item-mobile" matInput #amount type="number" value="1">
                     </mat-form-field>
-                  </form>
-                <button class="grid-item" mat-raised-button (click)="addToCart(product, amount.value)">Add To Cart</button>
+                </form>
+                <button class="grid-item-mobile" mat-raised-button (click)="addToCart(product, amount.value)">Add To Cart</button>
             </div>
         </mat-grid-tile>
     </mat-grid-list>

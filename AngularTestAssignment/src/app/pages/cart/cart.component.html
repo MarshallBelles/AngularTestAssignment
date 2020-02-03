@@ -1,1 +1,17 @@
 <app-navbar></app-navbar>
+<div class="buffer"></div>
+<div *ngIf="!items" class="container">
+    <p>It's a little empty here...</p>
+    <p>Go add some things to your cart!</p>
+</div>
+<div *ngIf="items" class="container">
+    <div *ngFor="let product of cart">
+        <h3>{{product.count}} x {{product.title}}</h3>
+        <p>Amount: </p><input #inp matInput style="max-width: 100px;"
+            type="number" value="{{product.count}}" (change)="updateQuantity(product.productRef, inp.value)">
+        <h3>${{product.price * product.count}}.00</h3>
+        <button mat-button (click)="removeItem(product.productRef)">Remove Item</button>
+    </div>
+    <div class="buffer"></div>
+    <button mat-raised-button (click)="clearCart()">Clear shopping cart</button>
+</div>

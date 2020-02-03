@@ -1,7 +1,7 @@
 <div class="form-container">
     <mat-form-field appearance="outline">
         <mat-label>Search Products</mat-label>
-        <input matInput #inp type="text" (change)="searchProducts(inp.value)">
+        <input matInput #inp [(ngModel)]='input' type="text" (change)="searchProducts(inp.value)">
         <button *ngIf="searching" mat-button (click)="clearSearch()">Clear Search</button>
     </mat-form-field>
 </div>
